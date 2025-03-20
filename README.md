@@ -2,7 +2,7 @@
  drf-spectacular es una herramienta excelente para generar automáticamente la especificación OpenAPI (en formato YAML o JSON) a partir de tus modelos, vistas y serializadores en Django REST Framework (DRF). No solo documenta tus endpoints, sino que también genera el archivo .yml o .json que describe toda tu API de manera estructurada.
 En Django REST Framework (DRF), un serializador es una clase que convierte datos complejos (como modelos de Django) en formatos como JSON, XML, etc., y viceversa. También se encarga de validar los datos entrantes.
 
-Se integra con Django REST Framework:
+Se integra con Django REST Framework :
 
 Funciona directamente con DRF, por lo que no necesitas definir manualmente la especificación OpenAPI. Todo se genera automáticamente.
 
