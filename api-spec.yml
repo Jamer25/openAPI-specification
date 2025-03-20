@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: API de Biblioteca
+  version: "1.0.0"
+  description: API para gestionar libros y préstamos
+servers:
+  - url: http://localhost:8000
+paths:
+  /libros/:
+    get:
+      summary: Lista todos los libros
+      responses:
+        '200':
+          description: Lista de libros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Libro'
+    post:
+      summary: Crea un nuevo libro
+      requestBody:
+        description: Datos del libro a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Libro'
+      responses:
+        '201':
+          description: Libro creado correctamente
+  /libros/{id}/prestar/:
+    post:
+      summary: Presta un libro
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID del libro a prestar
+      requestBody:
+        description: Datos del préstamo
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre_usuario:
+                  type: string
+                email_usuario:
+                  type: string
+      responses:
+        '200':
+          description: Préstamo registrado
+        '400':
+          description: Error en el préstamo
+components:
+  schemas:
+    Libro:
+      type: object
+      properties:
+        id:
+          type: integer
+        titulo:
+          type: string
+        autor:
+          type: string
+        codigo_qr:
+          type: string
+        estado:
+          type: string
+          enum: [disponible, prestado]
